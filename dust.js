@@ -34,8 +34,11 @@ var helpers = {
         var type = params.type || 'hex';
         return chunk.write(css.color(color, type));
     },
-    selector: function(chunk, ctx, bodies, params) {
+        selector: function(chunk, ctx, bodies, params) {
         var data = ctx.get('name');
+        var index = '';
+        var prefix = '';
+        var range = null;
         var dictionary = {
           "Dash-case" : "dash",
           "CamelCase": "camel",
@@ -50,12 +53,32 @@ var helpers = {
         }
 
         if (params.ranges) {
-          var index = params.index;
-          var range = params.ranges[index].ranges[0];
+          index = params.index;
+          range = params.ranges[index].ranges[0];
           data = ctx.get('text').substring(range.from, range.to);
         }
 
-        return chunk.write(type + utils.format(data, style));
+        var format = utils.format(data, style);
+
+        if (params.isText != '0') {
+          prefix = 'textStyle-';
+        }
+
+        format = prefix + (format && format || index);
+
+        return chunk.write(type + format);
+    },
+    textSnippet: function(chunk, ctx, bodies, params) {
+      var data = ctx.get('name');
+      if (params.ranges) {
+        var index = params.index;
+        var range = params.ranges[index].ranges[0];
+        data = ctx.get('text').substring(range.from, range.to);
+      }
+
+      data = 'Style for "' + data.slice(0, 14) + '"';
+
+      return chunk.write('// ' + data);
     }
 };
 
