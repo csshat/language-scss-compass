@@ -4,6 +4,11 @@
   "version": "1.0.0",
   "description": "Sass language",
   "main": "dust.js",
+  "scope": "source.css.scss",
+  "engines": {
+    "csshat": "~2.0.0",
+    "avocode": "*"
+  },
   "homepage": "https://github.com/csshat/language-scss-compass",
   "repository": {
     "type": "git",
