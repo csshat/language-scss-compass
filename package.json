@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Sass language",
   "main": "dust.js",
-  "scope": "source.css.scss",
+  "scope": "source.scss",
   "engines": {
     "csshat": "~2.0.0",
     "avocode": "*"
