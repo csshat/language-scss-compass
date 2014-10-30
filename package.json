@@ -1,7 +1,7 @@
 {
   "name": "csshat-language-scss-compass",
   "title": "SCSS (compass)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sass language",
   "main": "dust.js",
   "scope": "source.scss",
